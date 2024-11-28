@@ -5,6 +5,6 @@ RUN mkdir -p /usr/src/app && mkdir -p /etc/config/client
 WORKDIR /usr/src/app/component
 COPY . /usr/src/app
 
-EXPOSE 3001
+EXPOSE ${PORT:-8080}
 ENV NODE_ENV=production
-CMD [ "node", "./node_modules/terriajs-server/lib/app.js", "--config-file", "serverconfig.json" ]
+CMD [ "node", "./node_modules/terriajs-server/lib/app.js", "--config-file", "serverconfig.json", "--port", "${PORT:-8080}" ]

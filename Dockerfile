@@ -27,6 +27,6 @@ COPY --from=build /app/index.js index.js
 COPY --from=build /app/package.json package.json
 COPY --from=build /app/version.js version.js
 
-EXPOSE 3001
+EXPOSE ${PORT:-8080}
 ENV NODE_ENV=production
-CMD [ "node", "./node_modules/terriajs-server/lib/app.js", "--config-file", "serverconfig.json" ]
+CMD [ "node", "./node_modules/terriajs-server/lib/app.js", "--config-file", "serverconfig.json", "--port", "${PORT:-8080}" ]

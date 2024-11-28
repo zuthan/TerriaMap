@@ -12,6 +12,7 @@ var gulp = require("gulp");
 var path = require("path");
 var PluginError = require("plugin-error");
 var terriajsServerGulpTask = require("terriajs/buildprocess/terriajsServerGulpTask");
+const jsonfile = require('jsonfile');
 
 var watchOptions = {
   interval: 1000
@@ -285,7 +286,7 @@ function checkForDuplicateCesium() {
   }
 }
 
-gulp.task("terriajs-server", terriajsServerGulpTask(3001));
+gulp.task("terriajs-server", terriajsServerGulpTask(process.env.PORT || 8080));
 
 gulp.task("build", gulp.series("copy-terriajs-assets", "build-app"));
 gulp.task("release", gulp.series("copy-terriajs-assets", "release-app"));

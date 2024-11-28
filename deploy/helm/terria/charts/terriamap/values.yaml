@@ -43,7 +43,7 @@ initConfig:
     west: "109"
   catalog: []
 serverConfig:
-  port: 3001
+  port: ${PORT:-8080}
   allowProxyFor: []
   initPaths:
     - "/etc/config/client"
